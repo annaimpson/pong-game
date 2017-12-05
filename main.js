@@ -69,9 +69,6 @@ function pongGame(){
         if(y + drawY > canvas.height - ballRadius || y + drawY < ballRadius) {
             drawY = -drawY;
         }
-        if(x > positionOfPaddle1 && x < positionOfPaddle1 + paddleWidth) {
-                drawY = -drawY;
-            }
         if(x + drawX > canvas.width - ballRadius || x + drawX < ballRadius) {
             drawX = -drawX;
             alert("GAME OVER");
