@@ -10,27 +10,8 @@ var y = 100;
 var drawX = 1;
 var drawY = -1;
 var paddleX = (context.width - pongWidth)/2;
-console.log(canvas.width);
 
 function pongGame(){
-    document.addEventListener('keydown', function (e) {
-         if (e.keyCode == 87) { //W
-            positionOfPong1 -= 25;
-            pongOne.style.top = (positionOfPong1) + "px";
-         }
-         if (e.keyCode == 83) { //S
-            positionOfPong1 += 25;
-            pongOne.style.top = (positionOfPong1) + "px";
-         }
-         if (e.keyCode == 38) { //up arrow
-            positionOfPong2 -= 25;
-            pongTwo.style.top = (positionOfPong2) + "px";
-         }
-         if (e.keyCode == 40) { //down arrow
-            positionOfPong2 += 25;
-            pongTwo.style.top = (positionOfPong2) + "px";
-         }
-    }, false);
 
     function drawBall() {
         context.beginPath();
