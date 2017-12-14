@@ -9,7 +9,6 @@ var x = 100;
 var y = 100;
 var drawX = 1;
 var drawY = -1;
-var paddleX = (context.width - pongWidth)/2;
 
 function pongGame(){
 
@@ -63,22 +62,19 @@ function pongGame(){
         drawRightPaddle();
         drawLeftPaddle();
 
-        if (pongPositionOne <= 0 || pongPositionOne >= canvas.height - pongHeight) { //keeps left bar from going beyond top or bottom bar
-            pongPositionOne = 0;
-            pongPositionOne = window.innerHeight - pongHeight;
+        if (pongPositionOne <= 0 || pongPositionOne > canvas.height - pongHeight) { //keeps left bar from going beyond top or bottom bar
+            pongPositionOne = 0;                                                    //top stop isn't working. weird.
+            pongPositionOne = canvas.height - pongHeight;
         }
-        // if (positionOfPong2 <= 30 || positionOfPong2 > window.innerHeight - pongHeight) { //keeps right bar from going beyond top or bottom bar
-        //     positionOfPong2 = 30;
-        //     positionOfPong2 = window.innerHeight - pongHeight;
-        // }
+        if (pongPositionTwo <= 0 || pongPositionTwo > canvas.height - pongHeight) { //keeps right bar from going beyond top or bottom bar
+            pongPositionTwo = 0;
+            pongPositionTwo = canvas.height - pongHeight;
+        }
         if(y + drawY > canvas.height || y + drawY < 0) { //bounces the ball off the top and bottom of screen
             drawY = -drawY;
         }
-        if(x + drawX < ballRadius) {
-            drawX = -drawX;
-        }
-        else if(x + drawX > canvas.width - ballRadius) { //TODO
-            if(x > paddleX && x < paddleX + pongWidth) {
+        else if(x + drawX > canvas.width || x + drawX < 0) { //TODO
+            if(y > pongPositionTwo && y < pongPositionTwo + pongHeight  || y > pongPositionOne && y < pongPositionOne + pongHeight) {
                 drawX = -drawX;
             }
             else {
